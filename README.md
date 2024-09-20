@@ -41,23 +41,65 @@ Certbot manages SSL certificates, with automatic renewal and security options ap
 - `include /etc/letsencrypt/options-ssl-nginx.conf;` - Default SSL options provided by Certbot.
 - `ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;` - Strong Diffie-Hellman group for key exchange.
 
-## How to Use
+## Installation Steps
 
-1. Place the configuration file (`nginx.conf`) in the Nginx configuration directory, usually `/etc/nginx/sites-available/` or `/etc/nginx/conf.d/`.
-2. Ensure you have Certbot installed and have obtained an SSL certificate for your domain.
-3. Reload or restart Nginx to apply the configuration:
+### Step 1: Install Nginx
+
+1. **Update your package list:**
+   ```bash
+   sudo apt update
+2. **Install Nginx:**
+   ```bash
+   sudo apt install nginx -y
+3. **Start and enable Nginx to run on boot:**
+   ```bash
+   sudo systemctl start nginx
+   sudo systemctl enable nginx
+4. **Check the Nginx status:**
+   ```bash
+   sudo systemctl status nginx
+   
+### Step 2: Install Certbot and Obtain an SSL Certificate
+
+1. **Install Certbot and the Nginx plugin:**
+   ```bash
+   sudo apt install certbot python3-certbot-nginx -y
+2. **Obtain an SSL certificate for your domain: Replace domain_name with your actual domain.**
+   ```bash
+   sudo certbot --nginx -d domain_name
+3. **Follow the instructions to set up SSL. Certbot will:**
+   - Generate the certificate.
+   - Update your Nginx configuration to use the SSL certificate.
+4. **Test the certificate renewal process (optional):**
+   ```bash
+   sudo certbot renew --dry-run
+
+### Step 3: Nginx Configuration
+
+1. **Place the configuration file (nginx.conf) in the Nginx configuration directory, usually /etc/nginx/sites-available/ or /etc/nginx/conf.d/:**
+   ```bash
+   sudo nano /etc/nginx/sites-available/default
+2. **Restart Nginx to apply changes:**
    ```bash
    sudo systemctl reload nginx
-4. Verify that your application is accessible over HTTPS and traffic is correctly proxied to localhost:8080.
 
-## Requirements
+### Step 4: Verify SSL and Nginx Configuration
+   - Access your domain over HTTPS (https://domain_name) and verify the SSL certificate is working.
+   - Check that your application is accessible and proxied correctly to localhost:8080.
 
-- Nginx: Ensure Nginx is installed and properly configured.
-- Certbot: Install Certbot for managing Let's Encrypt SSL certificates.
-- Application: A backend application running on localhost:8080.
+### How to Use
+**Clone this repository:**
+   ```bash
+   git clone https://github.com/your-username/nginx-config.git
+   cd nginx-config
+**Place the nginx.conf file into your Nginx configuration directory (as described in Step 3 above) and restart Nginx.**
 
-## License
+### Requirements
+   - Nginx: Ensure Nginx is installed and properly configured (instructions provided above).
+   - Certbot: Install Certbot for managing Let's Encrypt SSL certificates.
+   - Application: A backend application running on localhost:8080.
+
+### License
 This project is open-source and can be used under the MIT License.
 
-This `README.md` explains the purpose of the configuration, breaks down its sections, and provides instructions on how to use it. It also highlights the key features, such as proxy headers, timeouts, and SSL setup.
-
+This updated `README.md` now includes detailed steps for installing Nginx, installing Certbot, and obtaining SSL certificates. It also provides instructions on how to place and use the configuration file.
