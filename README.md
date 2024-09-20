@@ -92,6 +92,7 @@ Certbot manages SSL certificates, with automatic renewal and security options ap
    ```bash
    git clone https://github.com/your-username/nginx-config.git
    cd nginx-config
+   ```
 **Place the `nginx.conf` file into your Nginx configuration directory (as described in Step 3 above) and restart Nginx.**
 
 ### Requirements
