@@ -76,7 +76,7 @@ Certbot manages SSL certificates, with automatic renewal and security options ap
 
 ### Step 3: Nginx Configuration
 
-1. **Place the configuration file (nginx.conf) in the Nginx configuration directory, usually /etc/nginx/sites-available/ or /etc/nginx/conf.d/:**
+1. **Place the configuration file (`nginx.conf`) in the Nginx configuration directory, usually `/etc/nginx/sites-available/` or `/etc/nginx/conf.d/`:**
    ```bash
    sudo nano /etc/nginx/sites-available/default
 2. **Restart Nginx to apply changes:**
@@ -84,20 +84,20 @@ Certbot manages SSL certificates, with automatic renewal and security options ap
    sudo systemctl reload nginx
 
 ### Step 4: Verify SSL and Nginx Configuration
-   - Access your domain over HTTPS (https://domain_name) and verify the SSL certificate is working.
-   - Check that your application is accessible and proxied correctly to localhost:8080.
+   - Access your domain over HTTPS (`https://domain_name`) and verify the SSL certificate is working.
+   - Check that your application is accessible and proxied correctly to `localhost:8080`.
 
 ### How to Use
 **Clone this repository:**
    ```bash
    git clone https://github.com/your-username/nginx-config.git
    cd nginx-config
-**Place the nginx.conf file into your Nginx configuration directory (as described in Step 3 above) and restart Nginx.**
+**Place the `nginx.conf` file into your Nginx configuration directory (as described in Step 3 above) and restart Nginx.**
 
 ### Requirements
    - Nginx: Ensure Nginx is installed and properly configured (instructions provided above).
    - Certbot: Install Certbot for managing Let's Encrypt SSL certificates.
-   - Application: A backend application running on localhost:8080.
+   - Application: A backend application running on `localhost:8080`.
 
 ### License
 This project is open-source and can be used under the MIT License.
